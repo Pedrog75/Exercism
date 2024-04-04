@@ -4,10 +4,30 @@ class AssemblyLine
   end
 
   def production_rate_per_hour
-    raise 'Please implement the AssemblyLine#production_rate_per_hour method'
+    if @speed >= 1 && @speed <= 4
+      production = @speed * 221
+    elsif @speed >= 5 && @speed <= 8
+      production = ((@speed * 221) * 0.9)
+    elsif @speed == 9
+      production = (9 * 221) * 0.8
+    else @speed == 10
+      production = (10 * 221) * 0.77
+    end
   end
 
   def working_items_per_minute
-    raise 'Please implement the AssemblyLine#working_items_per_minute method'
+    if @speed >= 1 && @speed <= 4
+      production = (@speed * 221) / 60
+      production.floor
+    elsif @speed >= 5 && @speed <= 8
+      production = (((@speed * 221) * 0.9)) / 60
+      production.floor
+    elsif @speed == 9
+      production = ((9 * 221) * 0.8) / 60
+      production.floor
+    else @speed == 10
+      production = ((10 * 221) * 0.77) / 60
+      production.floor
+    end
   end
 end
